@@ -29,7 +29,7 @@ public class TestClientsPage {
     }
 
 
-
+//Проверка на дублирования номера в админке
     @Test
     public void DublicateNumber(){
         driver.get("http://stage.toplivo.branderstudio.com:8086/admin/base/client-client/list");
@@ -54,6 +54,7 @@ public class TestClientsPage {
         title.getText();
     }
 
+    // Проверка создание клиента и редактирование
     @Test
     public void CorrectPhoneNumberAndEdit(){
         driver.get("http://stage.toplivo.branderstudio.com:8086/admin/base/client-client/list");
@@ -77,7 +78,7 @@ public class TestClientsPage {
     }
 
 
-
+    // Проверка создание клиента и возврат к списку
     @Test
     public void CorrectPhoneNumberAndBackToList(){
         driver.get("http://stage.toplivo.branderstudio.com:8086/admin/base/client-client/list");
@@ -106,7 +107,7 @@ public class TestClientsPage {
         saveBackButton.click();
     }
 
-
+    //Проверка создания клиента
     @Test
     public void CorrectPhoneNumberAndAddNew(){
         driver.get("http://stage.toplivo.branderstudio.com:8086/admin/base/client-client/list");
@@ -127,7 +128,19 @@ public class TestClientsPage {
 
         WebElement saveAddNewButton = driver.findElement(By.cssSelector("button.btn:nth-child(3)"));
         saveAddNewButton.click();
-        
+
+    }
+
+    //Проверка блокировки пользователя
+    @Test
+    public void BlockUser(){
+        driver.get("http://stage.toplivo.branderstudio.com:8086/admin/base/client-client/list");
+
+        WebElement blockButton = driver.findElement(By.xpath("/html/body/div[1]/div/section[2]/div[2]/div/form/div/div[1]/table/tbody/tr[1]/td[7]/div/a[2]"));
+        blockButton.click();
+
+        WebElement statusLabel = driver.findElement(By.xpath("/html/body/div[1]/div/section[2]/div[2]/div/form/div/div[1]/table/tbody/tr[1]/td[4]/span"));
+        statusLabel.getText();
     }
 
 
